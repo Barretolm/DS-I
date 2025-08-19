@@ -1,0 +1,38 @@
+package com.mycompany.venda;
+
+import java.util.Scanner;
+
+public class Venda {
+
+    public static void main(String[] args) {
+      
+        Scanner teclado = new Scanner(System.in);
+        
+        Produto[] itens = new Produto[5]; // vetor com 5 produtos
+        double total = 0; // soma dos preços
+        
+        for (int i = 0; i < itens.length; i++) {
+            itens[i] = new Produto(); // cria um produto na posição i
+            
+            System.out.println("\nProduto " + (i + 1));
+            
+            System.out.print("Número do produto: ");
+            int numero = teclado.nextInt();
+            teclado.nextLine(); // consome ENTER
+            itens[i].setNumero(numero);
+            
+            System.out.print("Descrição do produto: ");
+            String descricao = teclado.nextLine();
+            itens[i].setDescricao(descricao);
+            
+            System.out.print("Digite o preço do produto: ");
+            double preco = teclado.nextDouble();
+            teclado.nextLine(); // consome ENTER
+            itens[i].setPreco(preco);
+            
+            total += preco; // já soma o preço
+        }
+        
+        System.out.println("\nO preço total da compra foi R$ " + total);
+    }
+}
